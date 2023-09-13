@@ -6,6 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -39,7 +40,7 @@ public class FRAutentica extends javax.swing.JFrame {
         CaixaSenha = new javax.swing.JPasswordField();
         BotãoEntrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Autenticação");
         setResizable(false);
 
@@ -61,6 +62,11 @@ public class FRAutentica extends javax.swing.JFrame {
                 CaixaSenhaActionPerformed(evt);
             }
         });
+        CaixaSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaixaSenhaKeyPressed(evt);
+            }
+        });
 
         BotãoEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/porta.png"))); // NOI18N
         BotãoEntrar.setText("ENTRAR");
@@ -78,7 +84,7 @@ public class FRAutentica extends javax.swing.JFrame {
                 .addComponent(labelimgcadeado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,15 +137,23 @@ public class FRAutentica extends javax.swing.JFrame {
     }//GEN-LAST:event_CaixaSenhaActionPerformed
 
     private void BotãoEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoEntrarMouseClicked
-        UsuarioController controller = new UsuarioController();
-        char[] senha = CaixaSenha.getPassword();
-
-        if (controller.autenticar(CaixaEmail.getText(), new String(senha))) {
-            this.dispose();
-            new FRMenu().setVisible(true);
-        }
+    logar();
     }//GEN-LAST:event_BotãoEntrarMouseClicked
 
+    private void CaixaSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaSenhaKeyPressed
+       if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+           logar();
+       }
+    }//GEN-LAST:event_CaixaSenhaKeyPressed
+  private void logar(){
+    UsuarioController controller = new UsuarioController();
+    char[] senha = CaixaSenha.getPassword();
+    
+    if(controller.autenticar(CaixaEmail.getText(),new String(senha))){
+        this.dispose();
+        new FRMenu().setVisible(true);
+    }
+  }
     /**
      * @param args the command line arguments
      */

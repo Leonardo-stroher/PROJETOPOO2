@@ -15,7 +15,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -36,7 +36,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -61,11 +61,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="CaixaRepetirSenha" alignment="0" pref="295" max="32767" attributes="0"/>
-                              <Component id="CaixaSenhaCad" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CaixaEmailCad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CaixaRepetirSenha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CaixaSenha" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CaixaEmail" alignment="0" max="32767" attributes="0"/>
                               <Component id="CaixaNome" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BotãoSalvarCad" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="BotãoSalvarCad" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                                  <Component id="BotãoVoltar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -89,7 +94,7 @@
                                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="44" pref="81" max="32767" attributes="0"/>
+                          <EmptySpace min="44" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -110,7 +115,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="CaixaEmailCad" min="-2" max="-2" attributes="0"/>
+                  <Component id="CaixaEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -121,14 +126,17 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="CaixaSenhaCad" min="-2" max="-2" attributes="0"/>
+                  <Component id="CaixaSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="CaixaRepetirSenha" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="BotãoSalvarCad" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="BotãoVoltar" alignment="3" max="32767" attributes="0"/>
+                      <Component id="BotãoSalvarCad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,7 +189,7 @@
             <Property name="text" type="java.lang.String" value="NOME:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CaixaEmailCad">
+        <Component class="javax.swing.JTextField" name="CaixaEmail">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
@@ -238,7 +246,7 @@
             <Property name="text" type="java.lang.String" value="REPETIR SENHA:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="CaixaSenhaCad">
+        <Component class="javax.swing.JPasswordField" name="CaixaSenha">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="18" style="0"/>
@@ -261,7 +269,21 @@
             <Property name="text" type="java.lang.String" value="SALVAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bot&#xe3;oSalvarCadActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Bot&#xe3;oSalvarCadMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="Bot&#xe3;oVoltar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/ulbra/img/porta.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="VOLTAR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Bot&#xe3;oVoltarMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
