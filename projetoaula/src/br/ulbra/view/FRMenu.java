@@ -52,16 +52,16 @@ public class FRMenu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(131, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(119, 119, 119))
+                .addGap(108, 108, 108))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
 
         Cadastro.setText("Cadastros");
@@ -78,6 +78,11 @@ public class FRMenu extends javax.swing.JFrame {
         Cadastro.add(MEnseiCad);
 
         MESairCad.setText("Sair");
+        MESairCad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MESairCadActionPerformed(evt);
+            }
+        });
         Cadastro.add(MESairCad);
 
         jMenuBar1.add(Cadastro);
@@ -110,7 +115,7 @@ public class FRMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +132,10 @@ public class FRMenu extends javax.swing.JFrame {
     private void MEUsuarioConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEUsuarioConActionPerformed
         new FRConusu().setVisible(true);
     }//GEN-LAST:event_MEUsuarioConActionPerformed
+
+    private void MESairCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MESairCadActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_MESairCadActionPerformed
 
     /**
      * @param args the command line arguments

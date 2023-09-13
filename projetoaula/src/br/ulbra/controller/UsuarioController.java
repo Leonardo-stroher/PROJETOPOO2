@@ -27,6 +27,8 @@ public class UsuarioController {
             JOptionPane.showMessageDialog(null, "Usuario ou senha incorreta");
             return false;
         }
-    }
-;
+    };
+     public boolean adicionarUsuario(String nome,String email, String senha, String datan, int ativo){
+        return usuarioDAO.adicionarUsuario(nome, email, senha, datan, ativo);
+     }
 };
