@@ -5,6 +5,10 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.UsuarioController;
+import br.ulbra.model.Usuario;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author aluno.saolucas
@@ -34,7 +38,7 @@ public class FRConusu extends javax.swing.JFrame {
         CaixaBusca = new javax.swing.JTextField();
         BotãoBuscar = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaBuscarUsu = new javax.swing.JTable();
+        tabelaUsu = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,8 +56,13 @@ public class FRConusu extends javax.swing.JFrame {
         CaixaBusca.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         BotãoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/LUPA16.png"))); // NOI18N
+        BotãoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoBuscarMouseClicked(evt);
+            }
+        });
 
-        TabelaBuscarUsu.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaUsu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -64,7 +73,7 @@ public class FRConusu extends javax.swing.JFrame {
                 "CAD", "Nome", "Email", "Data de nascimento", "Ativo"
             }
         ));
-        jScrollPane1.setViewportView(TabelaBuscarUsu);
+        jScrollPane1.setViewportView(tabelaUsu);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,6 +132,24 @@ public class FRConusu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pesquisar() {
+        DefaultTableModel modelo = (DefaultTableModel) tabelaUsu.getModel();
+        modelo.setNumRows(0);
+        UsuarioController controller = new UsuarioController();
+        for (Usuario usu : controller.readForDesc(CaixaBusca.getText())) {
+            Object[] linha = {usu.getPkusuario(),
+                 usu.getNomeUsu(),
+                 usu.getEmailUsu(),
+                 usu.getDataNascUsu(),
+                 usu.AtivotoString()};
+            modelo.addRow(linha);
+        }
+    }
+
+    private void BotãoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoBuscarMouseClicked
+    pesquisar();
+    }//GEN-LAST:event_BotãoBuscarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -137,16 +164,28 @@ public class FRConusu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRConusu.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FRConusu.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FRConusu.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FRConusu.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -161,11 +200,11 @@ public class FRConusu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BotãoBuscar;
     private javax.swing.JTextField CaixaBusca;
-    private javax.swing.JTable TabelaBuscarUsu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaUsu;
     // End of variables declaration//GEN-END:variables
 }
