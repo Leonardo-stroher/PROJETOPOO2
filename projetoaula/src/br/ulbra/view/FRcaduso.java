@@ -6,6 +6,7 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
+import br.ulbra.utils.Utils;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,7 +40,7 @@ public class FRcaduso extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         CaixaEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        CaixaData = new javax.swing.JTextField();
+        CaixaNasc = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         CaixaRepetirSenha = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
@@ -78,10 +79,10 @@ public class FRcaduso extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("SENHA:");
 
-        CaixaData.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        CaixaData.addActionListener(new java.awt.event.ActionListener() {
+        CaixaNasc.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        CaixaNasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CaixaDataActionPerformed(evt);
+                CaixaNascActionPerformed(evt);
             }
         });
 
@@ -140,7 +141,7 @@ public class FRcaduso extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CaixaData, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(90, 90, 90)
                                 .addComponent(MarcarAtivo))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +174,7 @@ public class FRcaduso extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CaixaData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MarcarAtivo))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
@@ -204,9 +205,9 @@ public class FRcaduso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CaixaDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaDataActionPerformed
+    private void CaixaNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaNascActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CaixaDataActionPerformed
+    }//GEN-LAST:event_CaixaNascActionPerformed
 
     private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
         this.dispose();
@@ -233,7 +234,7 @@ public class FRcaduso extends javax.swing.JFrame {
 
             return false;
         }
-        if (!CaixaData.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+        if (!CaixaNasc.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
             JOptionPane.showMessageDialog(null, "Campo 'data nascimento' "
                     + "possui informações inválidas"
                     + "Ex:01/01/2000");
@@ -261,8 +262,13 @@ public class FRcaduso extends javax.swing.JFrame {
         if (!verificarCampos()) {
             return;
         }
+        
         UsuarioController controller = new UsuarioController();
-        if(controller.)
+        String senha = new String(CaixaSenha.getPassword());
+        if(controller.adicionarUsuario(CaixaNome.getText(), CaixaEmail.getText(), senha, CaixaNasc.getText(),
+                Utils.salvarBoolean(MarcarAtivo.isSelected()))){
+            this.dispose();
+        };
     }//GEN-LAST:event_BotãoSalvarCadMouseClicked
 
     /**
@@ -303,8 +309,8 @@ public class FRcaduso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BotãoSalvarCad;
     private javax.swing.JButton BotãoVoltar;
-    private javax.swing.JTextField CaixaData;
     private javax.swing.JTextField CaixaEmail;
+    private javax.swing.JTextField CaixaNasc;
     private javax.swing.JTextField CaixaNome;
     private javax.swing.JPasswordField CaixaRepetirSenha;
     private javax.swing.JPasswordField CaixaSenha;
