@@ -20,6 +20,7 @@ public class FRcaduso extends javax.swing.JFrame {
      */
     public FRcaduso() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**

@@ -42,7 +42,7 @@ public class Usuario {
     }
     
     public void setDataNascUsu(String dataNasc_usu){
-       this.dataNascUsu = dataNascUsu;
+       this.dataNascUsu = dataNasc_usu;
     }
     
      public int isAtivoUsu(){

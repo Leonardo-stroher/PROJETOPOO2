@@ -93,7 +93,7 @@ public class UsuarioDAO {
     }
 
     public List<Usuario> readForDesc(String desc) {
-        String sql = "SELECT * FROM tbusuario WHERE nomeusu LIKE";
+        String sql = "SELECT * FROM tbusuario WHERE nomeusu LIKE ?";
         GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
         PreparedStatement stmt = null;
@@ -125,4 +125,61 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
+    
+      public Usuario readForPK(int pk) {
+        String sql = "SELECT * FROM tbusuario WHERE pkusuario = ?";
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Usuario usuario = new Usuario();
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, pk);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                usuario.setPkusuario(rs.getInt("pkusuario"));
+                usuario.setnomeUsu(rs.getString("nomeusu"));
+                usuario.setEmailUsu(rs.getString("emailusu"));
+                usuario.setSenhaUsu(rs.getString("senhausu"));
+                usuario.setDataNascUsu(rs.getString("datanascusu"));
+                usuario.setAtivoUsu(rs.getInt("ativousu"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            GerenciadorConexao.closeConnection(con, stmt, rs);
+        }
+        return usuario;
+    }
+      
+      public boolean alterarUsuario(Usuario u){
+          GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+          Connection con = gerenciador.getConexao();
+          PreparedStatement stmt = null;
+          
+          try {
+              stmt = con.prepareStatement("UPDATE tbusuario SET nomeusu = ?, "
+              +" emailusu = ?, senhausu = ?, datanascusu = ?, " + "ativousu = ? WHERE tbusuario = ?");
+              stmt.setString(1, u.getNomeUsu());
+              stmt.setString(2, u.getEmailUsu());
+              stmt.setString(3, u.getSenhaUsu());
+              stmt.setString(4, u.getSenhaUsu());
+              stmt.setInt(5, u.isAtivoUsu());
+              stmt.setInt(6, u.getPkusuario());
+              
+              stmt.executeUpdate();
+              
+              JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
+              return true;
+          } catch(SQLException ex) {
+              JOptionPane.showMessageDialog(null, "Erro de atualização");
+          } finally {
+              GerenciadorConexao.closeConnection(con, stmt);
+          }
+          return false;
+      }
 }
