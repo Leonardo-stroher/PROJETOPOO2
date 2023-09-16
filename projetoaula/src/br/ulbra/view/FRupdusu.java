@@ -39,6 +39,7 @@ public class FRupdusu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -58,6 +59,8 @@ public class FRupdusu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         CaixaSenha = new javax.swing.JPasswordField();
         CaixaRepetirSenha = new javax.swing.JPasswordField();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -194,12 +197,12 @@ public class FRupdusu extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
                                 .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 5, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotãoVoltar)
                     .addComponent(MarcarAtivo))
-                .addGap(67, 67, 67))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,11 +255,13 @@ public class FRupdusu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -269,16 +274,17 @@ public class FRupdusu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotãoAlterarActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-      UsuarioController controller = new UsuarioController();
-      Usuario usu = controller.readForPK(pkUsuario);
-      
-      String codigo = String.valueOf(usu.getPkusuario());
-      CaixaCodigo.setText(codigo);
-      CaixaNome.setText(usu.getNomeUsu());
-      CaixaEmail.setText(usu.getEmailUsu());
-      CaixaNasc.setText(usu.getDataNascUsu());
-      CaixaSenha.setText(usu.getSenhaUsu());
-      MarcarAtivo.setSelected(usu.isAtivoUsu() == 1);
+        UsuarioController controller = new UsuarioController();
+        Usuario usu = controller.readForPK(pkUsuario);
+
+        String codigo = String.valueOf(usu.getPkusuario());
+        CaixaCodigo.setText(codigo);
+        CaixaNome.setText(usu.getNomeUsu());
+        CaixaEmail.setText(usu.getEmailUsu());
+        CaixaNasc.setText(usu.getDataNascUsu());
+        CaixaSenha.setText(usu.getSenhaUsu());
+        CaixaRepetirSenha.setText(usu.getSenhaUsu());
+        MarcarAtivo.setSelected(usu.isAtivoUsu() == 1);
     }//GEN-LAST:event_formWindowActivated
 
     private void CaixaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaCodigoActionPerformed
@@ -290,9 +296,19 @@ public class FRupdusu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotãoVoltarMouseClicked
 
     private void BotãoExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoExcluirMouseClicked
-        // TODO add your handling code here:
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuario?",
+                "confirmação", JOptionPane.YES_NO_OPTION);
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            UsuarioController controller = new UsuarioController();
+            if (controller.excluirUsuario(pkUsuario)) {
+                this.dispose();
+            }
+        }
+
+
     }//GEN-LAST:event_BotãoExcluirMouseClicked
- private boolean verificarCampos() {
+    private boolean verificarCampos() {
         if (CaixaNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo 'nome' em branco");
             return false;
@@ -308,8 +324,8 @@ public class FRupdusu extends javax.swing.JFrame {
             return false;
         }
 
-        if (!CaixaEmail.getText().matches("^[a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._]+$")) {
-            JOptionPane.showMessageDialog(null, "Campo 'email' não pode conter caracteres especias ou numeros");
+        if (!CaixaEmail.getText().matches("^[a-zA-Z._0-9]+@[a-zA-Z._]+.[a-zA-Z._]+$")) {
+            JOptionPane.showMessageDialog(null, "Campo 'email' não pode conter caracteres especias");
 
             return false;
         }
@@ -327,7 +343,7 @@ public class FRupdusu extends javax.swing.JFrame {
             return false;
         }
 
-        if (!new String (senha).equals(new String(CaixaSenha.getPassword()))) {
+        if (!new String(senha).equals(new String(CaixaSenha.getPassword()))) {
             JOptionPane.showMessageDialog(null, "As senhas não são iguais");
 
             return false;
@@ -337,10 +353,10 @@ public class FRupdusu extends javax.swing.JFrame {
     }
 
     private void BotãoAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoAlterarMouseClicked
-         if (!verificarCampos()) {
+        if (!verificarCampos()) {
             return;
         }
-        
+
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
         Usuario usuario = new Usuario();
@@ -350,9 +366,10 @@ public class FRupdusu extends javax.swing.JFrame {
         usuario.setDataNascUsu(CaixaNasc.getText());
         usuario.setSenhaUsu(senha);
         usuario.setAtivoUsu(Utils.salvarBoolean(MarcarAtivo.isSelected()));
-        if(controller.alterarUsuario(usuario)){
+        if (controller.alterarUsuario(usuario)) {
             this.dispose();
         };
+
     }//GEN-LAST:event_BotãoAlterarMouseClicked
 
     private void CaixaRepetirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaRepetirSenhaActionPerformed
@@ -405,6 +422,7 @@ public class FRupdusu extends javax.swing.JFrame {
     private javax.swing.JPasswordField CaixaRepetirSenha;
     private javax.swing.JPasswordField CaixaSenha;
     private javax.swing.JCheckBox MarcarAtivo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

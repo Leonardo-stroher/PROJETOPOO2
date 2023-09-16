@@ -94,7 +94,7 @@
                                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="44" max="32767" attributes="0"/>
+                          <EmptySpace min="44" pref="49" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
