@@ -125,8 +125,8 @@ public class UsuarioDAO {
         }
         return usuarios;
     }
-    
-      public Usuario readForPK(int pk) {
+
+    public Usuario readForPK(int pk) {
         String sql = "SELECT * FROM tbusuario WHERE pkusuario = ?";
         GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
         Connection con = gerenciador.getConexao();
@@ -155,31 +155,52 @@ public class UsuarioDAO {
         }
         return usuario;
     }
-      
-      public boolean alterarUsuario(Usuario u){
-          GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
-          Connection con = gerenciador.getConexao();
-          PreparedStatement stmt = null;
-          
-          try {
-              stmt = con.prepareStatement("UPDATE tbusuario SET nomeusu = ?, "
-              +" emailusu = ?, senhausu = ?, datanascusu = ?, " + "ativousu = ? WHERE tbusuario = ?");
-              stmt.setString(1, u.getNomeUsu());
-              stmt.setString(2, u.getEmailUsu());
-              stmt.setString(3, u.getSenhaUsu());
-              stmt.setString(4, u.getSenhaUsu());
-              stmt.setInt(5, u.isAtivoUsu());
-              stmt.setInt(6, u.getPkusuario());
-              
-              stmt.executeUpdate();
-              
-              JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
-              return true;
-          } catch(SQLException ex) {
-              JOptionPane.showMessageDialog(null, "Erro de atualização");
-          } finally {
-              GerenciadorConexao.closeConnection(con, stmt);
-          }
-          return false;
-      }
+
+    public boolean alterarUsuario(Usuario u) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE tbusuario SET nomeusu = ?, "
+                    + " emailusu = ?, senhausu = ?, datanascusu = ?, " + "ativousu = ? WHERE pkusuario = ?");
+            stmt.setString(1, u.getNomeUsu());
+            stmt.setString(2, u.getEmailUsu());
+            stmt.setString(3, u.getSenhaUsu());
+            stmt.setString(4, u.getDataNascUsu());
+            stmt.setInt(5, u.isAtivoUsu());
+            stmt.setInt(6, u.getPkusuario());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de atualização" + ex);
+        } finally {
+            GerenciadorConexao.closeConnection(con, stmt);
+        }
+        return false;
+    }
+    
+    public boolean excluirUsuario(int pkusuario) {
+        GerenciadorConexao gerenciador = GerenciadorConexao.getInstancia();
+        Connection con = gerenciador.getConexao();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM tbusuario WHERE pkusuario = ?");
+            stmt.setInt(1, pkusuario);
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso");
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de exclusão" + ex);
+        } finally {
+            GerenciadorConexao.closeConnection(con, stmt);
+        }
+        return false;
+    }
 }
