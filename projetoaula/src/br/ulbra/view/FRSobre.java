@@ -11,14 +11,15 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aluno.saolucas
+ * @author Aluno.saolucas
  */
-public class FRSobre extends javax.swing.JFrame {
+public class FRSobre extends javax.swing.JDialog {
 
     /**
-     * Creates new form FRSobre
+     * Creates new form FRSobre_
      */
-    public FRSobre() {
+    public FRSobre(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -40,7 +41,8 @@ public class FRSobre extends javax.swing.JFrame {
         BotãoVoltar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("aba sobre");
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 51));
 
@@ -103,7 +105,7 @@ public class FRSobre extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel5)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,8 +145,7 @@ public class FRSobre extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,6 +156,16 @@ public class FRSobre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotãoGithubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoGithubMouseClicked
+        try {
+            Desktop desktop = Desktop.getDesktop();
+            URI uri = new URI("https://github.com/Leonardo-stroher");
+            desktop.browse(uri);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_BotãoGithubMouseClicked
 
     private void BotãoGithubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoGithubActionPerformed
         // TODO add your handling code here:
@@ -167,16 +178,6 @@ public class FRSobre extends javax.swing.JFrame {
     private void BotãoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoVoltarActionPerformed
         this.dispose();
     }//GEN-LAST:event_BotãoVoltarActionPerformed
-
-    private void BotãoGithubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoGithubMouseClicked
-        try {
-            Desktop desktop = Desktop.getDesktop();
-            URI uri = new URI("https://github.com/Leonardo-stroher");
-            desktop.browse(uri);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_BotãoGithubMouseClicked
 
     /**
      * @param args the command line arguments
@@ -204,11 +205,19 @@ public class FRSobre extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FRSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRSobre().setVisible(true);
+                FRSobre dialog = new FRSobre(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

@@ -12,22 +12,21 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aluno.saolucas
+ * @author Aluno.saolucas
  */
-public class FRupdusu extends javax.swing.JFrame {
-
+public class FRupdusu extends javax.swing.JDialog {
     private int pkUsuario;
-
-    public void setPKUsuario(int pk) {
-        this.pkUsuario = pk;
-    }
+            
+            public void setPKUsuario (int pk){
+                this.pkUsuario = pk;
+            }
 
     /**
-     * Creates new form FRupdusu
+     * Creates new form FRupdusu_
      */
-    public FRupdusu() {
+    public FRupdusu(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -39,7 +38,6 @@ public class FRupdusu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,9 +58,8 @@ public class FRupdusu extends javax.swing.JFrame {
         CaixaSenha = new javax.swing.JPasswordField();
         CaixaRepetirSenha = new javax.swing.JPasswordField();
 
-        jButton1.setText("jButton1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("aba update");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -268,47 +265,7 @@ public class FRupdusu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BotãoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoAlterarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotãoAlterarActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        UsuarioController controller = new UsuarioController();
-        Usuario usu = controller.readForPK(pkUsuario);
-
-        String codigo = String.valueOf(usu.getPkusuario());
-        CaixaCodigo.setText(codigo);
-        CaixaNome.setText(usu.getNomeUsu());
-        CaixaEmail.setText(usu.getEmailUsu());
-        CaixaNasc.setText(usu.getDataNascUsu());
-        CaixaSenha.setText(usu.getSenhaUsu());
-        CaixaRepetirSenha.setText(usu.getSenhaUsu());
-        MarcarAtivo.setSelected(usu.isAtivoUsu() == 1);
-    }//GEN-LAST:event_formWindowActivated
-
-    private void CaixaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CaixaCodigoActionPerformed
-
-    private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_BotãoVoltarMouseClicked
-
-    private void BotãoExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoExcluirMouseClicked
-        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuario?",
-                "confirmação", JOptionPane.YES_NO_OPTION);
-
-        if (resposta == JOptionPane.YES_OPTION) {
-            UsuarioController controller = new UsuarioController();
-            if (controller.excluirUsuario(pkUsuario)) {
-                this.dispose();
-            }
-        }
-
-
-    }//GEN-LAST:event_BotãoExcluirMouseClicked
-    private boolean verificarCampos() {
+ private boolean verificarCampos() {
         if (CaixaNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo 'nome' em branco");
             return false;
@@ -351,7 +308,6 @@ public class FRupdusu extends javax.swing.JFrame {
 
         return true;
     }
-
     private void BotãoAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoAlterarMouseClicked
         if (!verificarCampos()) {
             return;
@@ -369,12 +325,50 @@ public class FRupdusu extends javax.swing.JFrame {
         if (controller.alterarUsuario(usuario)) {
             this.dispose();
         };
-
     }//GEN-LAST:event_BotãoAlterarMouseClicked
+
+    private void BotãoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotãoAlterarActionPerformed
+
+    private void BotãoExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoExcluirMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja excluir o usuario?",
+            "confirmação", JOptionPane.YES_NO_OPTION);
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            UsuarioController controller = new UsuarioController();
+            if (controller.excluirUsuario(pkUsuario)) {
+                this.dispose();
+            }
+        }
+
+    }//GEN-LAST:event_BotãoExcluirMouseClicked
+
+    private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_BotãoVoltarMouseClicked
+
+    private void CaixaCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaixaCodigoActionPerformed
 
     private void CaixaRepetirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaRepetirSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaRepetirSenhaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        UsuarioController controller = new UsuarioController();
+        Usuario usu = controller.readForPk(pkUsuario);
+       
+        String codigo = String.valueOf(usu.getPkUsuario());
+        txtCodigo.setText(codigo);
+        txtNome.setText(usu.getNomeUsu());
+        txtEmail.setText(usu.getEmailUsu());
+        txtDataNascimento.setText(usu.getDataNascUsu());
+        txtSenha.setText(usu.getSenhaUsu());
+        txtRSenha.setText(usu.getSenhaUsu());
+        chkAtivo.setSelected(usu.isAtivoUsu() == 1);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -402,11 +396,19 @@ public class FRupdusu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FRupdusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRupdusu().setVisible(true);
+                FRupdusu dialog = new FRupdusu(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -422,7 +424,6 @@ public class FRupdusu extends javax.swing.JFrame {
     private javax.swing.JPasswordField CaixaRepetirSenha;
     private javax.swing.JPasswordField CaixaSenha;
     private javax.swing.JCheckBox MarcarAtivo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

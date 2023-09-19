@@ -11,14 +11,19 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aluno.saolucas
+ * @author Aluno.saolucas
  */
-public class FRcaduso extends javax.swing.JFrame {
-
+public class FRcaduso extends javax.swing.JDialog {
+  private int pkUsuario;
+            
+            public void setPKUsuario (int pk){
+                this.pkUsuario = pk;
+            }
     /**
-     * Creates new form FRcaduso
+     * Creates new form FRcadusu
      */
-    public FRcaduso() {
+    public FRcaduso(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
          this.setLocationRelativeTo(null);
     }
@@ -32,7 +37,6 @@ public class FRcaduso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,11 +54,8 @@ public class FRcaduso extends javax.swing.JFrame {
         BotãoSalvarCad = new javax.swing.JToggleButton();
         BotãoVoltar = new javax.swing.JButton();
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("NOME:");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ulbra cadastro usuarios");
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 51));
 
@@ -154,7 +155,7 @@ public class FRcaduso extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel8)))
-                        .addGap(44, 49, Short.MAX_VALUE))))
+                        .addGap(44, 57, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +197,9 @@ public class FRcaduso extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,12 +212,7 @@ public class FRcaduso extends javax.swing.JFrame {
     private void CaixaNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaNascActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaNascActionPerformed
-
-    private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_BotãoVoltarMouseClicked
-
-    private boolean verificarCampos() {
+private boolean verificarCampos() {
         if (CaixaNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo 'nome' em branco");
             return false;
@@ -263,14 +261,18 @@ public class FRcaduso extends javax.swing.JFrame {
         if (!verificarCampos()) {
             return;
         }
-        
+
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
         if(controller.adicionarUsuario(CaixaNome.getText(), CaixaEmail.getText(), senha, CaixaNasc.getText(),
-                Utils.salvarBoolean(MarcarAtivo.isSelected()))){
-            this.dispose();
+            Utils.salvarBoolean(MarcarAtivo.isSelected()))){
+        this.dispose();
         };
     }//GEN-LAST:event_BotãoSalvarCadMouseClicked
+
+    private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_BotãoVoltarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -298,11 +300,19 @@ public class FRcaduso extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FRcaduso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRcaduso().setVisible(true);
+                FRcaduso dialog = new FRcaduso(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -320,7 +330,6 @@ public class FRcaduso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
