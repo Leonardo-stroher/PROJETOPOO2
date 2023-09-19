@@ -38,6 +38,7 @@ public class FRupdusu extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,6 +58,17 @@ public class FRupdusu extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         CaixaSenha = new javax.swing.JPasswordField();
         CaixaRepetirSenha = new javax.swing.JPasswordField();
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("aba update");
@@ -194,7 +206,7 @@ public class FRupdusu extends javax.swing.JDialog {
                                 .addComponent(jLabel8)
                                 .addGap(26, 26, 26)
                                 .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotãoVoltar)
@@ -252,9 +264,7 @@ public class FRupdusu extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,16 +368,16 @@ public class FRupdusu extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         UsuarioController controller = new UsuarioController();
-        Usuario usu = controller.readForPk(pkUsuario);
+        Usuario usu = controller.readForPK(pkUsuario);
        
-        String codigo = String.valueOf(usu.getPkUsuario());
-        txtCodigo.setText(codigo);
-        txtNome.setText(usu.getNomeUsu());
-        txtEmail.setText(usu.getEmailUsu());
-        txtDataNascimento.setText(usu.getDataNascUsu());
-        txtSenha.setText(usu.getSenhaUsu());
-        txtRSenha.setText(usu.getSenhaUsu());
-        chkAtivo.setSelected(usu.isAtivoUsu() == 1);
+        String codigo = String.valueOf(usu.getPkusuario());
+        CaixaCodigo.setText(codigo);
+        CaixaNome.setText(usu.getNomeUsu());
+        CaixaEmail.setText(usu.getEmailUsu());
+        CaixaNasc.setText(usu.getDataNascUsu());
+        CaixaSenha.setText(usu.getSenhaUsu());
+        CaixaRepetirSenha.setText(usu.getSenhaUsu());
+        MarcarAtivo.setSelected(usu.isAtivoUsu() == 1);
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -432,6 +442,7 @@ public class FRupdusu extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
