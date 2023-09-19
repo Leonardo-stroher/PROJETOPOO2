@@ -105,6 +105,11 @@ public class FRMenu extends javax.swing.JFrame {
         Ajuda.setText("Ajuda");
 
         MEsobreAju.setText("Sobre");
+        MEsobreAju.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MEsobreAjuActionPerformed(evt);
+            }
+        });
         Ajuda.add(MEsobreAju);
 
         jMenuBar1.add(Ajuda);
@@ -126,16 +131,20 @@ public class FRMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MEUsuarioCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEUsuarioCadActionPerformed
-        new FRcaduso().setVisible(true);
+        new FRcaduso(this,rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_MEUsuarioCadActionPerformed
 
     private void MEUsuarioConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEUsuarioConActionPerformed
-        new FRConusu().setVisible(true);
+        new FRConusu(this,rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_MEUsuarioConActionPerformed
-
+    
     private void MESairCadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MESairCadActionPerformed
        this.dispose();
     }//GEN-LAST:event_MESairCadActionPerformed
+
+    private void MEsobreAjuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEsobreAjuActionPerformed
+       new FRSobre(this,rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_MEsobreAjuActionPerformed
 
     /**
      * @param args the command line arguments

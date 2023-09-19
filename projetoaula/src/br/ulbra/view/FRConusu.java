@@ -12,16 +12,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author aluno.saolucas
+ * @author Aluno.saolucas
  */
-public class FRConusu extends javax.swing.JFrame {
-
+public class FRConusu extends javax.swing.JDialog {
+  private int pkUsuario;
+            
+            public void setPKUsuario (int pk){
+                this.pkUsuario = pk;
+            }
     /**
-     * Creates new form FRConusu
+     * Creates new form FRConsu
      */
-    public FRConusu() {
+    public FRConusu(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -44,11 +48,7 @@ public class FRConusu extends javax.swing.JFrame {
         BotâoVoltar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
+        setTitle("aba consulta");
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 51));
 
@@ -164,8 +164,7 @@ public class FRConusu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void pesquisar() {
+ private void pesquisar() {
         DefaultTableModel modelo = (DefaultTableModel) tabelaUsu.getModel();
         modelo.setNumRows(0);
         UsuarioController controller = new UsuarioController();
@@ -178,6 +177,11 @@ public class FRConusu extends javax.swing.JFrame {
             modelo.addRow(linha);
         }
     }
+    private void CaixaBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            pesquisar();
+        }
+    }//GEN-LAST:event_CaixaBuscaKeyPressed
 
     private void BotãoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoBuscarMouseClicked
         pesquisar();
@@ -186,23 +190,13 @@ public class FRConusu extends javax.swing.JFrame {
     private void tabelaUsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaUsuMouseClicked
         if (tabelaUsu.getSelectedRow() != -1) {
             int pk = Integer.parseInt(
-                    tabelaUsu.getValueAt(tabelaUsu.getSelectedRow(), 0).toString());
+                tabelaUsu.getValueAt(tabelaUsu.getSelectedRow(), 0).toString());
 
-            FRupdusu telaUPD = new FRupdusu();
+            FRupdusu telaUPD = new FRupdusu(null, rootPaneCheckingEnabled);
             telaUPD.setPKUsuario(pk);
             telaUPD.setVisible(true);
         };
     }//GEN-LAST:event_tabelaUsuMouseClicked
-
-    private void CaixaBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-           pesquisar();
-       }
-    }//GEN-LAST:event_CaixaBuscaKeyPressed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-         pesquisar();
-    }//GEN-LAST:event_formWindowActivated
 
     private void BotâoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotâoVoltarMouseClicked
         this.dispose();
@@ -222,31 +216,31 @@ public class FRConusu extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
+            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FRConusu.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRConusu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FRConusu().setVisible(true);
+                FRConusu dialog = new FRConusu(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
