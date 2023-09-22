@@ -7,6 +7,10 @@ package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
 import br.ulbra.utils.Utils;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,18 +18,20 @@ import javax.swing.JOptionPane;
  * @author Aluno.saolucas
  */
 public class FRcaduso extends javax.swing.JDialog {
-  private int pkUsuario;
-            
-            public void setPKUsuario (int pk){
-                this.pkUsuario = pk;
-            }
+
+    private int pkUsuario;
+
+    public void setPKUsuario(int pk) {
+        this.pkUsuario = pk;
+    }
+
     /**
      * Creates new form FRcadusu
      */
     public FRcaduso(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,6 +59,8 @@ public class FRcaduso extends javax.swing.JDialog {
         MarcarAtivo = new javax.swing.JCheckBox();
         BotãoSalvarCad = new javax.swing.JToggleButton();
         BotãoVoltar = new javax.swing.JButton();
+        Labelfoto = new javax.swing.JLabel();
+        BotãoEscolherImagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("ulbra cadastro usuarios");
@@ -120,6 +128,15 @@ public class FRcaduso extends javax.swing.JDialog {
             }
         });
 
+        Labelfoto.setText(".");
+
+        BotãoEscolherImagem.setText("Escolher uma imagem de perfil");
+        BotãoEscolherImagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoEscolherImagemMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -127,51 +144,62 @@ public class FRcaduso extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CaixaSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CaixaEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CaixaNome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(BotãoSalvarCad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addComponent(BotãoVoltar)
-                                .addGap(23, 23, 23))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(90, 90, 90)
+                            .addComponent(MarcarAtivo))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90)
-                                .addComponent(MarcarAtivo))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel2))
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel8)))
-                        .addGap(44, 57, Short.MAX_VALUE))))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CaixaSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CaixaEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CaixaNome, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(BotãoSalvarCad)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                            .addComponent(BotãoVoltar)
+                            .addGap(23, 23, 23))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(BotãoEscolherImagem)
+                        .addGap(78, 78, 78))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Labelfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CaixaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CaixaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(Labelfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotãoEscolherImagem)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -197,9 +225,7 @@ public class FRcaduso extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +238,12 @@ public class FRcaduso extends javax.swing.JDialog {
     private void CaixaNascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaNascActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaNascActionPerformed
-private boolean verificarCampos() {
+    private boolean verificarCampos() {
+
+        if (Labelfoto.getIcon() == null) {
+            JOptionPane.showMessageDialog(null, "Campo 'Foto' em branco");
+            return false;
+        }
         if (CaixaNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campo 'nome' em branco");
             return false;
@@ -247,7 +278,7 @@ private boolean verificarCampos() {
             return false;
         }
 
-        if (!new String (senha).equals(new String(CaixaSenha.getPassword()))) {
+        if (!new String(senha).equals(new String(CaixaSenha.getPassword()))) {
             JOptionPane.showMessageDialog(null, "As senhas não são iguais");
 
             return false;
@@ -264,15 +295,31 @@ private boolean verificarCampos() {
 
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
-        if(controller.adicionarUsuario(CaixaNome.getText(), CaixaEmail.getText(), senha, CaixaNasc.getText(),
-            Utils.salvarBoolean(MarcarAtivo.isSelected()))){
-        this.dispose();
+        if (controller.adicionarUsuario(CaixaNome.getText(), CaixaEmail.getText(), senha, CaixaNasc.getText(),
+                Utils.salvarBoolean(MarcarAtivo.isSelected()),Labelfoto.getIcon())) {
+            this.dispose();
         };
     }//GEN-LAST:event_BotãoSalvarCadMouseClicked
 
     private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
         this.dispose();
     }//GEN-LAST:event_BotãoVoltarMouseClicked
+
+    private void BotãoEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoEscolherImagemMouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Escolha um arquivo");
+
+        int returnValue = fileChooser.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File arquivo = fileChooser.getSelectedFile();
+            Icon icon = Utils.fileParaIcon(arquivo);
+
+            ImageIcon iconRedimensionado = Utils.redimensionarIcon(icon, 140, 140);
+
+            Labelfoto.setIcon(iconRedimensionado);
+        }
+    }//GEN-LAST:event_BotãoEscolherImagemMouseClicked
 
     /**
      * @param args the command line arguments
@@ -318,6 +365,7 @@ private boolean verificarCampos() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotãoEscolherImagem;
     private javax.swing.JToggleButton BotãoSalvarCad;
     private javax.swing.JButton BotãoVoltar;
     private javax.swing.JTextField CaixaEmail;
@@ -325,6 +373,7 @@ private boolean verificarCampos() {
     private javax.swing.JTextField CaixaNome;
     private javax.swing.JPasswordField CaixaRepetirSenha;
     private javax.swing.JPasswordField CaixaSenha;
+    private javax.swing.JLabel Labelfoto;
     private javax.swing.JCheckBox MarcarAtivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
