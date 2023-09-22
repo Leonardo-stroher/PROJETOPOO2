@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,10 +40,12 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean adicionarUsuario(String nome, String email, String senha, String datan, int ativo) {
-        String sql = "INSERT into TBUSUARIO (nomeUsu, emailUSU, senhaUSU,  dataNascUsu, ativoUsu) "
-                + "VALUES (?,?,?,?,?)";
+    public boolean adicionarUsuario(String nome, String email, String senha, String datan, int ativo, Icon icone) {
+        String sql = "INSERT into TBUSUARIO (nomeUsu, emailUSU, senhaUSU,  dataNascUsu, ativoUsu, imagemUsu) "
+                + "VALUES (?,?,?,?,?,?)";
         try {
+            
+            
             PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setString(2, email);
