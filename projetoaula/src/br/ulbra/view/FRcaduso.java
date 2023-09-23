@@ -6,8 +6,11 @@
 package br.ulbra.view;
 
 import br.ulbra.controller.UsuarioController;
+import br.ulbra.model.Usuario;
 import br.ulbra.utils.Utils;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -295,8 +298,14 @@ public class FRcaduso extends javax.swing.JDialog {
 
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
-        if (controller.adicionarUsuario(CaixaNome.getText(), CaixaEmail.getText(), senha, CaixaNasc.getText(),
-                Utils.salvarBoolean(MarcarAtivo.isSelected()),Labelfoto.getIcon())) {
+        Usuario usu = new Usuario();
+        usu.setnomeUsu(CaixaNome.getText());
+        usu.setEmailUsu( CaixaEmail.getText());
+        usu.setDataNascUsu(CaixaNasc.getText());
+        usu.setSenhaUsu(senha);
+        usu.setAtivoUsu(Utils.salvarBoolean(MarcarAtivo.isSelected()));
+        usu.setImagemUsu(Labelfoto.getIcon());
+        if (controller.adicionarUsuario(usu)) {
             this.dispose();
         };
     }//GEN-LAST:event_BotãoSalvarCadMouseClicked

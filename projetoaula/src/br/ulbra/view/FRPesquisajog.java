@@ -130,7 +130,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- private void pesquisar_jogo() {
+ /*private void pesquisar_jogo() {
         DefaultTableModel modelo = (DefaultTableModel) Tabelajog.getModel();
         modelo.setNumRows(0);
         JogoController controller = new JogoController();
@@ -142,7 +142,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
                 jog.getFreteJog()};
             modelo.addRow(linha);
         }
-    }
+    }*/
     private void CaixaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaBuscaActionPerformed
         
     }//GEN-LAST:event_CaixaBuscaActionPerformed
