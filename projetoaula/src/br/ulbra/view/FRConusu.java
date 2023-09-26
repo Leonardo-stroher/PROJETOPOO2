@@ -181,11 +181,11 @@ public class FRConusu extends javax.swing.JDialog {
         modelo.setNumRows(0);
         UsuarioController controller = new UsuarioController();
         for (Usuario usu : controller.readForDesc(CaixaFiltro.getSelectedIndex(), CaixaBusca.getText())) {
-            Object[] linha = {usu.getPkusuario(),
-                usu.getNomeUsu(),
-                usu.getEmailUsu(),
-                usu.getDataNascUsu(),
-                usu.AtivotoString()};
+            Object[] linha = {usu.getPk(),
+                usu.getNome(),
+                usu.getEmail(),
+                usu.getDataNasc(),
+                usu.ativoToString()};
             modelo.addRow(linha);
         }
     }

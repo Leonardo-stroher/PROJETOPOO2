@@ -186,31 +186,31 @@ public class FRupdusu extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)))
                             .addComponent(jLabel5)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel6)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3)))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CaixaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(CaixaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(CaixaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(26, 26, 26)
-                        .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(249, 249, 249))
+                        .addComponent(CaixaRepetirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -256,16 +256,19 @@ public class FRupdusu extends javax.swing.JDialog {
                                     .addComponent(jLabel7))))))
                 .addGap(18, 18, 18)
                 .addComponent(BotãoEscolherImagem)
-                .addGap(52, 52, 52)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CaixaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MarcarAtivo)
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(MarcarAtivo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(CaixaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CaixaNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,13 +353,13 @@ public class FRupdusu extends javax.swing.JDialog {
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
         Usuario usuario = new Usuario();
-        usuario.setPkusuario(pkUsuario);
-        usuario.setnomeUsu(CaixaNome.getText());
-        usuario.setEmailUsu(CaixaEmail.getText());
-        usuario.setDataNascUsu(CaixaNasc.getText());
-        usuario.setSenhaUsu(senha);
-        usuario.setAtivoUsu(Utils.salvarBoolean(MarcarAtivo.isSelected()));
-        usuario.setImagemUsu(Labelfoto.getIcon());
+        usuario.setPk(pkUsuario);
+        usuario.setNome(CaixaNome.getText());
+        usuario.setEmail(CaixaEmail.getText());
+        usuario.setDataNasc(CaixaNasc.getText());
+        usuario.setSenha(senha);
+        usuario.setAtivo(Utils.salvarBoolean(MarcarAtivo.isSelected()));
+        usuario.setImagem(Labelfoto.getIcon());
         if (controller.alterarUsuario(usuario)) {
             this.dispose();
         };
@@ -394,15 +397,15 @@ public class FRupdusu extends javax.swing.JDialog {
          UsuarioController controller = new UsuarioController();
         Usuario usu = controller.readForPK(pkUsuario);
        
-        String codigo = String.valueOf(usu.getPkusuario());
+        String codigo = String.valueOf(usu.getPk());
         CaixaCodigo.setText(codigo);
-        CaixaNome.setText(usu.getNomeUsu());
-        CaixaEmail.setText(usu.getEmailUsu());
-        CaixaNasc.setText(usu.getDataNascUsu());
-        CaixaSenha.setText(usu.getSenhaUsu());
-        CaixaRepetirSenha.setText(usu.getSenhaUsu());
-        MarcarAtivo.setSelected(usu.isAtivoUsu() == 1);
-        Labelfoto.setIcon(usu.getImagemUsu());
+        CaixaNome.setText(usu.getNome());
+        CaixaEmail.setText(usu.getEmail());
+        CaixaNasc.setText(usu.getDataNasc());
+        CaixaSenha.setText(usu.getSenha());
+        CaixaRepetirSenha.setText(usu.getSenha());
+        MarcarAtivo.setSelected(usu.getAtivo() == 1);
+        Labelfoto.setIcon(usu.getImagem());
     }
     private void BotãoEscolherImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoEscolherImagemMouseClicked
         JFileChooser fileChooser = new JFileChooser();
