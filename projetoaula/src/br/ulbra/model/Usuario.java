@@ -7,83 +7,32 @@ import javax.swing.Icon;
  *
  * @author aluno.saolucas
  */
-public class Usuario {
-    private int pkUsuario;
-    private String nomeUsu;
-    private String emailUsu;
-    private String dataNascUsu;
-    private int ativoUsu;
-    private String senhaUsu;
-    private Icon imagemUsu;
-    
-    public int getPkusuario(){
-        return pkUsuario;
+public class Usuario extends Pessoa {
+   
+    private String dataNasc;
+    private String senha;
+
+    public String getDataNasc() {
+        return dataNasc;
     }
-    
-    public void setPkusuario(int pk_usuario){
-       this.pkUsuario = pk_usuario;
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
     }
-    
-    public String getNomeUsu(){
-        return nomeUsu;
+
+    public String getSenha() {
+        return senha;
     }
-    
-    public void setnomeUsu(String nome_usu){
-       this.nomeUsu = nome_usu;
-    }
-    
-     public String getEmailUsu(){
-        return emailUsu;
-    }
-    
-    public void setEmailUsu(String email_usu){
-       this.emailUsu = email_usu;
-    }
-    
-     public String getDataNascUsu(){
-        return dataNascUsu;
-    }
-    
-    public void setDataNascUsu(String dataNasc_usu){
-       this.dataNascUsu = dataNasc_usu;
-    }
-    
-     public int isAtivoUsu(){
-        return ativoUsu;
-    }
-    
-    public void setAtivoUsu (int ativo_usu){
-       this.ativoUsu = ativo_usu;
-    }
-    
-     public String getSenhaUsu(){
-        return senhaUsu;
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
      
-      public void setSenhaUsu(String senha_usu){
-        this.senhaUsu = senha_usu;
-    }
-      
-     public String AtivotoString(){
-         if (this.ativoUsu == 1)
-             return "Ativo";
-                     else
-             return "inativo";
-     }
-
-    public Icon getImagemUsu() {
-        return imagemUsu;
-    }
-
-    public void setImagemUsu(Icon imagem) {
-        this.imagemUsu = imagem;
-    }
-      
     @Override
       public String toString(){
-          return "Usuario {" + "pkUsuario-" + pkUsuario + ", nomeUsu-" + nomeUsu + ", emailUsu" +
-                  emailUsu + ", dataNascUsu" + dataNascUsu + ", ativoUsu-" + ativoUsu + ", senhaUsu" +
-                  senhaUsu + '}';
+          return "Usuario {" + "pk" + getPk() + ", nome-" + getNome() + ", email" +
+                  getEmail() + ", dataNasc" + dataNasc + ", ativo-" + getAtivo() + ", senha" +
+                  senha + '}';
       }
       
       

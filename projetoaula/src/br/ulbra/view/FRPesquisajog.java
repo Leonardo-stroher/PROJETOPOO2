@@ -5,7 +5,10 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.JogoController;
+import br.ulbra.model.Jogo;
 import java.awt.event.KeyEvent;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -72,7 +75,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NOME", "PREÇO", "LOJA", "DATA LANÇAMENTO"
             }
         ));
         jScrollPane1.setViewportView(Tabelajog);
@@ -113,8 +116,8 @@ public class FRPesquisajog extends javax.swing.JDialog {
                             .addComponent(CaixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BotãoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -152,9 +155,21 @@ public class FRPesquisajog extends javax.swing.JDialog {
             
         }
     }//GEN-LAST:event_CaixaBuscaKeyPressed
-
+  private void pesquisarJogo() {
+        DefaultTableModel modelo = (DefaultTableModel) Tabelajog.getModel();
+        modelo.setNumRows(0);
+        JogoController controller = new JogoController();
+        for (Jogo jog : controller.readForPKjogo(CaixaBusca.getText())) {
+            Object[] linha = {jogo.getPkjog(),
+                jog.getNomejog(),
+                jog.getPrecojog(),
+                jog.getLojajog(),
+                jog.getDatalancjog()};
+            modelo.addRow(linha);
+        }
+    }
     private void BotãoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoBuscarMouseClicked
-        
+        pesquisarJogo();
     }//GEN-LAST:event_BotãoBuscarMouseClicked
 
     /**

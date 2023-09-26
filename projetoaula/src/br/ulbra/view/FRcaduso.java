@@ -172,14 +172,14 @@ public class FRcaduso extends javax.swing.JDialog {
                             .addComponent(BotãoVoltar)
                             .addGap(23, 23, 23))
                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BotãoEscolherImagem)
-                        .addGap(78, 78, 78))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Labelfoto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))))
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(BotãoEscolherImagem)
+                        .addGap(59, 59, 59))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,12 +299,12 @@ public class FRcaduso extends javax.swing.JDialog {
         UsuarioController controller = new UsuarioController();
         String senha = new String(CaixaSenha.getPassword());
         Usuario usu = new Usuario();
-        usu.setnomeUsu(CaixaNome.getText());
-        usu.setEmailUsu( CaixaEmail.getText());
-        usu.setDataNascUsu(CaixaNasc.getText());
-        usu.setSenhaUsu(senha);
-        usu.setAtivoUsu(Utils.salvarBoolean(MarcarAtivo.isSelected()));
-        usu.setImagemUsu(Labelfoto.getIcon());
+        usu.setNome(CaixaNome.getText());
+        usu.setEmail( CaixaEmail.getText());
+        usu.setDataNasc(CaixaNasc.getText());
+        usu.setSenha(senha);
+        usu.setAtivo(Utils.salvarBoolean(MarcarAtivo.isSelected()));
+        usu.setImagem(Labelfoto.getIcon());
         if (controller.adicionarUsuario(usu)) {
             this.dispose();
         };

@@ -5,6 +5,8 @@
  */
 package br.ulbra.model;
 
+import javax.swing.Icon;
+
 /**
  *
  * @author s.lucas
@@ -18,6 +20,7 @@ public class Jogo {
     private String datalancjog;
     private String classindjog;
     private String descricaojog;
+    private Icon imagemJogo;
 
     public int getPkjogo() {
         return pkjogo;
@@ -81,6 +84,14 @@ public class Jogo {
 
     public void setDescricaojog(String descricaojog) {
         this.descricaojog = descricaojog;
+    }
+
+    public Icon getImagemJogo() {
+        return imagemJogo;
+    }
+
+    public void setImagemJogo(Icon imagemJogo) {
+        this.imagemJogo = imagemJogo;
     }
     
     
