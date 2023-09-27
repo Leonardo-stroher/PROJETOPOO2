@@ -160,7 +160,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
         modelo.setNumRows(0);
         JogoController controller = new JogoController();
         for (Jogo jog : controller.readForPKjogo(CaixaBusca.getText())) {
-            Object[] linha = {jogo.getPkjog(),
+            Object[] linha = {jog.getPkjogo(),
                 jog.getNomejog(),
                 jog.getPrecojog(),
                 jog.getLojajog(),

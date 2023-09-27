@@ -3,26 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/utils/Utils.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRcaduso.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRConusu.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRCompararPrecojog.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRSobre.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/controller/JogoController.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRPesquisajog.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRMenu.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/UsuarioDAO.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/Jogo.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/Pessoa.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/GerenciadorConexao.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRAutentica.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRCadjog.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/Usuario.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRLinkeloja.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/JogoDAO.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRupdusu.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/controller/UsuarioController.java</file>
-            <file>file:/C:/Users/s.lucas/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/Cliente.java</file>
+            <file>file:/C:/Users/Leo/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/JogoDAO.java</file>
+            <file>file:/C:/Users/Leo/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRPesquisajog.java</file>
+            <file>file:/C:/Users/Leo/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/view/FRCompararPrecojog.java</file>
+            <file>file:/C:/Users/Leo/Documents/GitHub/PROJETOPOO2/projetoaula/src/br/ulbra/model/Jogo.java</file>
         </group>
     </open-files>
 </project-private>
