@@ -5,6 +5,7 @@
  */
 package br.ulbra.utils;
 
+import br.ulbra.view.FRCompararPrecojog;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -15,6 +16,7 @@ import java.util.function.Function;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -65,5 +67,16 @@ public class Utils {
             }
         };
 
+        
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new FRCompararPrecojog.ComparacaoDePrecosJFrame().setVisible(true);
+            }
+        });
+    }
+        
     }
 }
