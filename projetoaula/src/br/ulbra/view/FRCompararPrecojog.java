@@ -5,7 +5,17 @@
  */
 package br.ulbra.view;
 
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.function.Function;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -63,6 +73,7 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        botaoComparar = new javax.swing.JButton();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -139,6 +150,13 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
 
         jLabel12.setText("NOME");
 
+        botaoComparar.setText("COMPARAR PREÇOS");
+        botaoComparar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botaoCompararMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -197,6 +215,8 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                             .addComponent(CaixaLojaJog1)
                             .addComponent(jScrollPane4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaoComparar)
+                        .addGap(40, 40, 40)
                         .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +260,7 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                             .addComponent(CaixaPrecoJog1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CaixaLojaJog1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addGap(19, 19, 19)
@@ -248,7 +268,8 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
-                                .addComponent(jLabel10)))
+                                .addComponent(jLabel10))
+                            .addComponent(botaoComparar))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,6 +343,78 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
            PesquisarJogo();
        }
     }//GEN-LAST:event_caixaCódigo1KeyPressed
+public class ComparacaoDePrecosJFrame extends JFrame {
+
+    private JTextField CaixaPrecojog1;
+    private JTextField CaixaPrecojog2;
+    private JButton botaoComparar;
+
+    public ComparacaoDePrecosJFrame() {
+        setTitle("Comparação de Preços de Jogos");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        // Crie os componentes
+        CaixaPrecoJog1 = new JTextField(10);
+        CaixaPrecoJog2 = new JTextField(10);
+        botaoComparar = new JButton("Comparar");
+
+        // Crie um painel para organizar os componentes
+        JPanel painel = new JPanel();
+        painel.setLayout(new FlowLayout());
+        painel.add(new JLabel("Preço do Jogo 1:"));
+        painel.add(CaixaPrecoJog1);
+        painel.add(new JLabel("Preço do Jogo 2:"));
+        painel.add(CaixaPrecoJog2);
+        painel.add(botaoComparar);
+
+        // Adicione o painel ao JFrame
+        getContentPane().add(painel);
+
+        // Adicione um ouvinte de ação ao botão para comparar os preços
+        botaoComparar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                compararPrecos();
+            }
+        });
+    }
+
+    private void compararPrecos() {
+        // Suponha que você tenha obtido os preços dos jogos como Strings das caixas de texto.
+        String precoTexto1 = CaixaPrecoJog1.getText();
+        String precoTexto2 = CaixaPrecoJog2.getText();
+
+        // Converte os preços de String para double
+        Function<String, Double> stringToDouble = s -> {
+            try {
+                return Double.parseDouble(s);
+            } catch (NumberFormatException ex) {
+                return null;
+            }
+        };
+
+        Double preco1 = stringToDouble.apply(precoTexto1);
+        Double preco2 = stringToDouble.apply(precoTexto2);
+
+        // Verifica qual dos jogos é mais barato
+        if (preco1 != null && preco2 != null) {
+            if (preco1 < preco2) {
+                JOptionPane.showMessageDialog(this, "Jogo 1 é mais barato.");
+            } else if (preco1 > preco2) {
+                JOptionPane.showMessageDialog(this, "Jogo 2 é mais barato.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ambos têm o mesmo preço.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Um dos preços inseridos não é um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+    private void botaoCompararMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCompararMouseClicked
+       
+    }//GEN-LAST:event_botaoCompararMouseClicked
 
     /**
      * @param args the command line arguments
@@ -377,6 +470,7 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
     private javax.swing.JTextField CaixaPrecoJog2;
     private javax.swing.JLabel LableCapaJogo1;
     private javax.swing.JLabel LableCapaJogo2;
+    private javax.swing.JButton botaoComparar;
     private javax.swing.JTextField caixaCódigo;
     private javax.swing.JTextField caixaCódigo1;
     private javax.swing.JButton jButton1;
