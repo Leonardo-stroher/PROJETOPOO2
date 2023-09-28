@@ -67,5 +67,10 @@ public class Jogo {
         this.imagemJogo = imagemJogo;
     }
     
+    @Override
+      public String toString(){
+          return "Usuario {" + "pk do jogo" + getPkjogo() + ", nome jogo-" + getNomejog() + ", preço jogo" +
+                  getPrecojog() + ", descrição" + descricaojog + '}';
+      }
     
 }
