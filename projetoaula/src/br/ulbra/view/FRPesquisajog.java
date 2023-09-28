@@ -34,7 +34,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        CaixaBusca = new javax.swing.JTextField();
+        CaixaBuscaJog = new javax.swing.JTextField();
         BotãoBuscar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,15 +45,15 @@ public class FRPesquisajog extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 51));
 
-        CaixaBusca.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        CaixaBusca.addActionListener(new java.awt.event.ActionListener() {
+        CaixaBuscaJog.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        CaixaBuscaJog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CaixaBuscaActionPerformed(evt);
+                CaixaBuscaJogActionPerformed(evt);
             }
         });
-        CaixaBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+        CaixaBuscaJog.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                CaixaBuscaKeyPressed(evt);
+                CaixaBuscaJogKeyPressed(evt);
             }
         });
 
@@ -100,7 +100,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CaixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CaixaBuscaJog, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(BotãoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -118,7 +118,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CaixaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CaixaBuscaJog, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BotãoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,20 +151,20 @@ public class FRPesquisajog extends javax.swing.JDialog {
             modelo.addRow(linha);
         }
     }*/
-    private void CaixaBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaBuscaActionPerformed
+    private void CaixaBuscaJogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaBuscaJogActionPerformed
         
-    }//GEN-LAST:event_CaixaBuscaActionPerformed
+    }//GEN-LAST:event_CaixaBuscaJogActionPerformed
 
-    private void CaixaBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaKeyPressed
+    private void CaixaBuscaJogKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaJogKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
             pesquisarJogo();
         }
-    }//GEN-LAST:event_CaixaBuscaKeyPressed
+    }//GEN-LAST:event_CaixaBuscaJogKeyPressed
   private void pesquisarJogo() {
         DefaultTableModel modelo = (DefaultTableModel) Tabelajog.getModel();
         modelo.setNumRows(0);
         JogoController controller = new JogoController();
-        for (Jogo jog : controller.readForPKjogo(CaixaBusca.getText())) {
+        for (Jogo jog : controller.readForPKjogo(CaixaBuscaJog.stringToInt())) {
             Object[] linha = {jog.getPkjogo(),
                 jog.getNomejog(),
                 jog.getPrecojog(),
@@ -233,7 +233,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BotãoBuscar;
-    private javax.swing.JTextField CaixaBusca;
+    private javax.swing.JTextField CaixaBuscaJog;
     private javax.swing.JTable Tabelajog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
