@@ -5,6 +5,7 @@
  */
 package br.ulbra.model;
 
+import br.ulbra.utils.Utils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -50,7 +51,6 @@ public class JogoDAO {
                 jogo.setNomejog(rs.getString("nomejog"));
                 jogo.setPrecojog(rs.getDouble("precojog"));
                 jogo.setLojajog(rs.getString("lojajog"));
-                jogo.setDatalancjog(rs.getString("datalancjogo"));
                 jogo.setDescricaojog(rs.getString("descricaojog"));
 
                 jogos.add(jogo);
@@ -83,7 +83,6 @@ public class JogoDAO {
                 jogo.setNomejog(rs.getString("nomejog"));
                 jogo.setPrecojog(rs.getDouble("Precojog"));
                 jogo.setLojajog(rs.getString("Lojajog"));
-                jogo.setDatalancjog(rs.getString("datalancjog"));
                 jogo.setDescricaojog(rs.getString("descricaojog"));
 
                 byte[] bytes = rs.getBytes("imagemJogo");
@@ -101,4 +100,28 @@ public class JogoDAO {
         }
         return jogo;
     }
+     
+    public boolean adicionarJogo(Jogo j) {
+        String sql = "INSERT into TBJOGOS (nomejog, precojog, lojajog,  descricaojog, imagemjogo) "
+                + "VALUES (?,?,?,?,?)";
+        try {
+            byte[] iconbyte = Utils.iconToBytes(j.getImagemJogo());
+
+            PreparedStatement stmt = gerenciador.getConexao().prepareStatement(sql);
+            stmt.setString(1, j.getNomejog());
+            stmt.setDouble(2, j.getPrecojog());
+            stmt.setString(3, j.getLojajog());
+            stmt.setString(4, j.getDescricaojog());
+            stmt.setBytes(5, iconbyte);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Jogo: " + j.getNomejog() + " inserido com sucesso!");
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e.getMessage());
+        }
+        return false;
+    }
+
 }

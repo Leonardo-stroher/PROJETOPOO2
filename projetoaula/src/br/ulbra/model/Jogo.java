@@ -16,9 +16,6 @@ public class Jogo {
     private String nomejog;
     private double precojog;
     private String lojajog;
-    private String categoriasjog;
-    private String datalancjog;
-    private String classindjog;
     private String descricaojog;
     private Icon imagemJogo;
 
@@ -52,30 +49,6 @@ public class Jogo {
 
     public void setLojajog(String lojajog) {
         this.lojajog = lojajog;
-    }
-
-    public String getCategoriasjog() {
-        return categoriasjog;
-    }
-
-    public void setCategoriasjog(String categoriasjog) {
-        this.categoriasjog = categoriasjog;
-    }
-
-    public String getDatalancjog() {
-        return datalancjog;
-    }
-
-    public void setDatalancjog(String datalancjog) {
-        this.datalancjog = datalancjog;
-    }
-
-    public String getClassindjog() {
-        return classindjog;
-    }
-
-    public void setClassindjog(String classindjog) {
-        this.classindjog = classindjog;
     }
 
     public String getDescricaojog() {

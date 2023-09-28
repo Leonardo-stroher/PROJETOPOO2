@@ -5,6 +5,15 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.JogoController;
+import br.ulbra.model.Jogo;
+import br.ulbra.utils.Utils;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author s.lucas
@@ -28,6 +37,8 @@ public class FRCadjog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         CaixaNomeJog = new javax.swing.JTextField();
         CaixaPrecoJog = new javax.swing.JTextField();
@@ -38,6 +49,14 @@ public class FRCadjog extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         CaixaDescriJog = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        BotãoAdicionar = new javax.swing.JButton();
+        BotãoVoltar = new javax.swing.JButton();
+        LabelFotoJog = new javax.swing.JLabel();
+        BotãoAdicionarCapa = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,6 +91,29 @@ public class FRCadjog extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setText("CADASTRAR JOGO");
 
+        BotãoAdicionar.setText("ADICIONAR");
+        BotãoAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoAdicionarMouseClicked(evt);
+            }
+        });
+
+        BotãoVoltar.setText("VOLTAR");
+        BotãoVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoVoltarMouseClicked(evt);
+            }
+        });
+
+        LabelFotoJog.setText("IMAGEM DO JOGO");
+
+        BotãoAdicionarCapa.setText("ADICIONAR CAPA");
+        BotãoAdicionarCapa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoAdicionarCapaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -79,24 +121,40 @@ public class FRCadjog extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(CaixaDescriJog, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(CaixaLojaJog)
-                        .addComponent(CaixaNomeJog)
-                        .addComponent(CaixaPrecoJog))
-                    .addComponent(jLabel5))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(LabelFotoJog, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94)
+                        .addComponent(BotãoAdicionarCapa)
+                        .addGap(0, 173, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CaixaDescriJog, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1)
+                                .addComponent(CaixaLojaJog)
+                                .addComponent(CaixaNomeJog)
+                                .addComponent(CaixaPrecoJog))
+                            .addComponent(jLabel5))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BotãoAdicionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotãoVoltar)
+                        .addGap(65, 65, 65))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelFotoJog, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotãoAdicionarCapa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CaixaNomeJog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,8 +169,12 @@ public class FRCadjog extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CaixaDescriJog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(CaixaDescriJog, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotãoAdicionar)
+                    .addComponent(BotãoVoltar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,6 +204,75 @@ public class FRCadjog extends javax.swing.JDialog {
     private void CaixaNomeJogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaNomeJogActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaNomeJogActionPerformed
+
+    private void BotãoVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoVoltarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_BotãoVoltarMouseClicked
+      private boolean verificarCamposJogo() {
+
+        if (LabelFotoJog.getIcon() == null) {
+            JOptionPane.showMessageDialog(null, "Campo 'Foto' em branco");
+            return false;
+        }
+        if (CaixaNomeJog.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Campo 'nome' em branco");
+            return false;
+        }
+        String texto = CaixaNomeJog.getText();
+        if (!texto.matches("^[\\p{L} ]+$")) {
+            JOptionPane.showMessageDialog(null, "Campo 'nome' não pode conter caracteres especias ou numeros");
+            return false;
+        }
+
+        if (CaixaDescriJog.getText().matches("^[a-zA-Z._]+@[a-zA-Z._]+.[a-zA-Z._]+$")) {
+            JOptionPane.showMessageDialog(null, "Campo 'Descrição' não pode conter caracteres especias");
+
+            return false;
+        }
+        if (CaixaPrecoJog.getText().matches("^[0-9]+,[0-9]{2}$")) {
+            JOptionPane.showMessageDialog(null, "Campo 'Preço' "+
+                    "Não pode conter letras nem caracteres especiais");
+            return false;
+        
+        }
+
+        return true;
+    }
+
+
+    private void BotãoAdicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoAdicionarMouseClicked
+        if (!verificarCamposJogo()) {
+            return;
+        }
+
+        JogoController controller = new JogoController();
+        Jogo jog = new Jogo();
+        jog.setNomejog(CaixaNomeJog.getText());
+        double numeroDouble = Double.parseDouble(CaixaPrecoJog.getText());
+        jog.setPrecojog(numeroDouble);
+        jog.setDescricaojog(CaixaDescriJog.getText());
+        jog.setLojajog(CaixaLojaJog.getText());
+        jog.setImagemJogo(LabelFotoJog.getIcon());
+        if (controller.adicionarJogo(jog)) {
+            this.dispose();
+        };
+    }//GEN-LAST:event_BotãoAdicionarMouseClicked
+
+    private void BotãoAdicionarCapaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoAdicionarCapaMouseClicked
+         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Escolha um arquivo");
+
+        int returnValue = fileChooser.showOpenDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File arquivo = fileChooser.getSelectedFile();
+            Icon icon = Utils.fileParaIcon(arquivo);
+
+            ImageIcon iconRedimensionado = Utils.redimensionarIcon(icon, 140, 140);
+
+            LabelFotoJog.setIcon(iconRedimensionado);
+        }
+    }//GEN-LAST:event_BotãoAdicionarCapaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -189,15 +320,21 @@ public class FRCadjog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotãoAdicionar;
+    private javax.swing.JButton BotãoAdicionarCapa;
+    private javax.swing.JButton BotãoVoltar;
     private javax.swing.JTextField CaixaDescriJog;
     private javax.swing.JTextField CaixaLojaJog;
     private javax.swing.JTextField CaixaNomeJog;
     private javax.swing.JTextField CaixaPrecoJog;
+    private javax.swing.JLabel LabelFotoJog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

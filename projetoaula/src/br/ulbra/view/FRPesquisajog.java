@@ -78,6 +78,11 @@ public class FRPesquisajog extends javax.swing.JDialog {
                 "NOME", "PREÇO", "LOJA", "DATA LANÇAMENTO"
             }
         ));
+        Tabelajog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelajogMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabelajog);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ulbra/img/controle.png"))); // NOI18N
@@ -152,7 +157,7 @@ public class FRPesquisajog extends javax.swing.JDialog {
 
     private void CaixaBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-            
+            pesquisarJogo();
         }
     }//GEN-LAST:event_CaixaBuscaKeyPressed
   private void pesquisarJogo() {
@@ -164,13 +169,25 @@ public class FRPesquisajog extends javax.swing.JDialog {
                 jog.getNomejog(),
                 jog.getPrecojog(),
                 jog.getLojajog(),
-                jog.getDatalancjog()};
+                jog.getDescricaojog()};
             modelo.addRow(linha);
         }
     }
     private void BotãoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoBuscarMouseClicked
         pesquisarJogo();
     }//GEN-LAST:event_BotãoBuscarMouseClicked
+
+    private void TabelajogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelajogMouseClicked
+         if (Tabelajog.getSelectedRow() != -1) {
+            int pk = Integer.parseInt(
+                Tabelajog.getValueAt(Tabelajog.getSelectedRow(), 0).toString());
+
+            FRupdusu telaUPD = new FRupdusu(null, rootPaneCheckingEnabled);
+            telaUPD.setPKUsuario(pk);
+            telaUPD.carregarUsuario();
+            telaUPD.setVisible(true);
+        };
+    }//GEN-LAST:event_TabelajogMouseClicked
 
     /**
      * @param args the command line arguments
