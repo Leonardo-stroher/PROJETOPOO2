@@ -32,7 +32,7 @@ public class FRMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Cadastro = new javax.swing.JMenu();
         MEUsuarioCad = new javax.swing.JMenuItem();
-        MEnseiCad = new javax.swing.JMenuItem();
+        CadJogo = new javax.swing.JMenuItem();
         MESairCad = new javax.swing.JMenuItem();
         Consulta = new javax.swing.JMenu();
         MEUsuarioCon = new javax.swing.JMenuItem();
@@ -74,8 +74,18 @@ public class FRMenu extends javax.swing.JFrame {
         });
         Cadastro.add(MEUsuarioCad);
 
-        MEnseiCad.setText("???");
-        Cadastro.add(MEnseiCad);
+        CadJogo.setText("Cadastrar jogo");
+        CadJogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CadJogoMouseClicked(evt);
+            }
+        });
+        CadJogo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadJogoActionPerformed(evt);
+            }
+        });
+        Cadastro.add(CadJogo);
 
         MESairCad.setText("Sair");
         MESairCad.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +107,12 @@ public class FRMenu extends javax.swing.JFrame {
         });
         Consulta.add(MEUsuarioCon);
 
-        MEnseiCon.setText("???");
+        MEnseiCon.setText("Comparar jogos");
+        MEnseiCon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MEnseiConMouseClicked(evt);
+            }
+        });
         Consulta.add(MEnseiCon);
 
         jMenuBar1.add(Consulta);
@@ -146,6 +161,18 @@ public class FRMenu extends javax.swing.JFrame {
        new FRSobre(this,rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_MEsobreAjuActionPerformed
 
+    private void CadJogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadJogoMouseClicked
+        new FRCadjog(this,rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_CadJogoMouseClicked
+
+    private void MEnseiConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MEnseiConMouseClicked
+      new FRCompararPrecojog(this,rootPaneCheckingEnabled).setVisible(true);  
+    }//GEN-LAST:event_MEnseiConMouseClicked
+
+    private void CadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadJogoActionPerformed
+        new FRCadjog(this,rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_CadJogoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,12 +210,12 @@ public class FRMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Ajuda;
+    private javax.swing.JMenuItem CadJogo;
     private javax.swing.JMenu Cadastro;
     private javax.swing.JMenu Consulta;
     private javax.swing.JMenuItem MESairCad;
     private javax.swing.JMenuItem MEUsuarioCad;
     private javax.swing.JMenuItem MEUsuarioCon;
-    private javax.swing.JMenuItem MEnseiCad;
     private javax.swing.JMenuItem MEnseiCon;
     private javax.swing.JMenuItem MEsobreAju;
     private javax.swing.JLabel jLabel1;

@@ -25,4 +25,8 @@ public class JogoController {
 
     }
     
+     public boolean adicionarJogo(Jogo j) {
+        return jogoDAO.adicionarJogo(j);
+    }
+     
 }
