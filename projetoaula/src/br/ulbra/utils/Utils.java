@@ -5,7 +5,7 @@
  */
 package br.ulbra.utils;
 
-import br.ulbra.view.FRCompararPrecojog;
+import br.ulbra.view.FRCompararjog;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -63,20 +63,9 @@ public class Utils {
             try {
                 return Integer.parseInt(s);
             } catch (NumberFormatException e) {
-                return null; 
+                return null;
             }
         };
 
-        
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new FRCompararPrecojog.ComparacaoDePrecosJFrame().setVisible(true);
-            }
-        });
-    }
-        
     }
 }

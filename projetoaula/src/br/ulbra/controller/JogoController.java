@@ -7,6 +7,7 @@ package br.ulbra.controller;
 
 import br.ulbra.model.Jogo;
 import br.ulbra.model.JogoDAO;
+import java.util.List;
 
 /**
  *
@@ -28,5 +29,9 @@ public class JogoController {
      public boolean adicionarJogo(Jogo j) {
         return jogoDAO.adicionarJogo(j);
     }
+     
+     public List<Jogo> readDescJogo(String nome) {
+         return jogoDAO.readDescJogo(nome);
+     }
      
 }

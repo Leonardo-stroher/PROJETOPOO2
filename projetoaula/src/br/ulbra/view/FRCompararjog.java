@@ -5,6 +5,8 @@
  */
 package br.ulbra.view;
 
+import br.ulbra.controller.JogoController;
+import br.ulbra.model.Jogo;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +23,12 @@ import javax.swing.JTextField;
  *
  * @author s.lucas
  */
-public class FRCompararPrecojog extends javax.swing.JDialog {
+public class FRCompararjog extends javax.swing.JDialog {
 
     /**
      * Creates new form FRCompararPrecojog
      */
-    public FRCompararPrecojog(java.awt.Frame parent, boolean modal) {
+    public FRCompararjog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -56,13 +58,11 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
         CaixaPrecoJog2 = new javax.swing.JTextField();
         CaixaLojaJog2 = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        AreaDescricaojog = new javax.swing.JTextArea();
-        CaixaPorceJogos = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        AreaDescricaojog2 = new javax.swing.JTextArea();
         caixaCódigo1 = new javax.swing.JTextField();
-        caixaCódigo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        caixaCódigo2 = new javax.swing.JTextField();
+        BotãoSelect1 = new javax.swing.JButton();
+        BotãoSelect2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -73,7 +73,6 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        botaoComparar = new javax.swing.JButton();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -96,23 +95,9 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
         AreaDescricaojo1.setRows(5);
         jScrollPane4.setViewportView(AreaDescricaojo1);
 
-        LableCapaJogo1.setText("IMAGE1");
-
-        LableCapaJogo2.setText("IMAGE2");
-
-        AreaDescricaojog.setColumns(20);
-        AreaDescricaojog.setRows(5);
-        jScrollPane5.setViewportView(AreaDescricaojog);
-
-        CaixaPorceJogos.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        CaixaPorceJogos.setText(">");
-        CaixaPorceJogos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CaixaPorceJogosActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("QUAL POSSUI O MENOR PREÇO");
+        AreaDescricaojog2.setColumns(20);
+        AreaDescricaojog2.setRows(5);
+        jScrollPane5.setViewportView(AreaDescricaojog2);
 
         caixaCódigo1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -120,15 +105,30 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
             }
         });
 
-        caixaCódigo.addActionListener(new java.awt.event.ActionListener() {
+        caixaCódigo2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                caixaCódigoActionPerformed(evt);
+                caixaCódigo2ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("SELECIONAR JOGO 1");
+        BotãoSelect1.setText("SELECIONAR JOGO 1");
+        BotãoSelect1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoSelect1MouseClicked(evt);
+            }
+        });
+        BotãoSelect1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotãoSelect1ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("SELECIONAR JOGO 2");
+        BotãoSelect2.setText("SELECIONAR JOGO 2");
+        BotãoSelect2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotãoSelect2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("CÓDIGO");
 
@@ -150,13 +150,6 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
 
         jLabel12.setText("NOME");
 
-        botaoComparar.setText("COMPARAR PREÇOS");
-        botaoComparar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botaoCompararMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -166,14 +159,14 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                 .addComponent(LableCapaJogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
+                        .addGap(156, 156, 156)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addGap(39, 39, 39)
-                .addComponent(jButton2)
-                .addGap(29, 29, 29)
+                        .addComponent(BotãoSelect1)
+                        .addGap(31, 31, 31)
+                        .addComponent(BotãoSelect2)))
+                .addGap(49, 49, 49)
                 .addComponent(LableCapaJogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -198,25 +191,17 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CaixaPrecoJog1)
                             .addComponent(CaixaNomejog1))
-                        .addGap(92, 92, 92)
+                        .addGap(306, 306, 306)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel4))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(CaixaPorceJogos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(126, 126, 126)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)))))
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(CaixaLojaJog1)
                             .addComponent(jScrollPane4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoComparar)
-                        .addGap(40, 40, 40)
                         .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +210,7 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                         .addComponent(CaixaNomeJog2)
                         .addComponent(CaixaPrecoJog2)
                         .addComponent(CaixaLojaJog2))
-                    .addComponent(caixaCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(caixaCódigo2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87))
         );
         jPanel2Layout.setVerticalGroup(
@@ -241,15 +226,15 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                            .addComponent(BotãoSelect1)
+                            .addComponent(BotãoSelect2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(caixaCódigo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(caixaCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(caixaCódigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -268,36 +253,29 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
-                                .addComponent(jLabel10))
-                            .addComponent(botaoComparar))
+                                .addComponent(jLabel10)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CaixaNomeJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(CaixaNomejog1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CaixaPrecoJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CaixaLojaJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CaixaNomeJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(CaixaNomejog1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CaixaPrecoJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(CaixaLojaJog2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel7))))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(CaixaPorceJogos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(122, 122, 122)))
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel7)))
                         .addGap(17, 17, 17))))
         );
 
@@ -330,91 +308,60 @@ public class FRCompararPrecojog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CaixaLojaJog1ActionPerformed
 
-    private void CaixaPorceJogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaPorceJogosActionPerformed
+    private void caixaCódigo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaCódigo2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CaixaPorceJogosActionPerformed
-
-    private void caixaCódigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaCódigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_caixaCódigoActionPerformed
+    }//GEN-LAST:event_caixaCódigo2ActionPerformed
 
     private void caixaCódigo1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caixaCódigo1KeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-           PesquisarJogo();
-       }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //PesquisarJogo();
+        }
     }//GEN-LAST:event_caixaCódigo1KeyPressed
-public class ComparacaoDePrecosJFrame extends JFrame {
+    public void CarregarProduto(int produto) {
+        Jogo jog = null;
+        JogoController controller = new JogoController();
+        if (produto == 1) {
+            jog = controller.readForPKjogo(Integer.parseInt(caixaCódigo1.getText()));
+        }
+        if (produto == 2) {
+           jog = controller.readForPKjogo(Integer.parseInt(caixaCódigo2.getText()));
+        }
+        String codigo = String.valueOf(jog.getPkjogo());
+        String Preco = String.valueOf(jog.getPrecojog());
 
-    private JTextField CaixaPrecojog1;
-    private JTextField CaixaPrecojog2;
-    private JButton botaoComparar;
-
-    public ComparacaoDePrecosJFrame() {
-        setTitle("Comparação de Preços de Jogos");
-        setSize(400, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-        // Crie os componentes
-        CaixaPrecoJog1 = new JTextField(10);
-        CaixaPrecoJog2 = new JTextField(10);
-        botaoComparar = new JButton("Comparar");
-
-        // Crie um painel para organizar os componentes
-        JPanel painel = new JPanel();
-        painel.setLayout(new FlowLayout());
-        painel.add(new JLabel("Preço do Jogo 1:"));
-        painel.add(CaixaPrecoJog1);
-        painel.add(new JLabel("Preço do Jogo 2:"));
-        painel.add(CaixaPrecoJog2);
-        painel.add(botaoComparar);
-
-        // Adicione o painel ao JFrame
-        getContentPane().add(painel);
-
-        // Adicione um ouvinte de ação ao botão para comparar os preços
-        botaoComparar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                compararPrecos();
-            }
-        });
-    }
-
-    private void compararPrecos() {
-        // Suponha que você tenha obtido os preços dos jogos como Strings das caixas de texto.
-        String precoTexto1 = CaixaPrecoJog1.getText();
-        String precoTexto2 = CaixaPrecoJog2.getText();
-
-        // Converte os preços de String para double
-        Function<String, Double> stringToDouble = s -> {
-            try {
-                return Double.parseDouble(s);
-            } catch (NumberFormatException ex) {
-                return null;
-            }
-        };
-
-        Double preco1 = stringToDouble.apply(precoTexto1);
-        Double preco2 = stringToDouble.apply(precoTexto2);
-
-        // Verifica qual dos jogos é mais barato
-        if (preco1 != null && preco2 != null) {
-            if (preco1 < preco2) {
-                JOptionPane.showMessageDialog(this, "Jogo 1 é mais barato.");
-            } else if (preco1 > preco2) {
-                JOptionPane.showMessageDialog(this, "Jogo 2 é mais barato.");
-            } else {
-                JOptionPane.showMessageDialog(this, "Ambos têm o mesmo preço.");
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Um dos preços inseridos não é um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+        if (produto == 1) {
+            caixaCódigo1.setText(codigo);
+            CaixaNomejog1.setText(jog.getNomejog());
+            CaixaPrecoJog1.setText(Preco);
+            CaixaLojaJog1.setText(jog.getLojajog());
+            AreaDescricaojo1.setText(jog.getDescricaojog());
+            LableCapaJogo1.setIcon(jog.getImagemJogo());
+        } else if (produto == 2) {
+            caixaCódigo2.setText(codigo);
+            CaixaNomeJog2.setText(jog.getNomejog());
+            CaixaPrecoJog2.setText(Preco);
+            CaixaLojaJog2.setText(jog.getLojajog());
+            AreaDescricaojog2.setText(jog.getDescricaojog());
+            LableCapaJogo2.setIcon(jog.getImagemJogo());
         }
     }
-}
-    private void botaoCompararMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoCompararMouseClicked
-       
-    }//GEN-LAST:event_botaoCompararMouseClicked
+    private void BotãoSelect1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoSelect1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotãoSelect1ActionPerformed
+
+    private void BotãoSelect1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoSelect1MouseClicked
+        FRPesquisajog telaPesquisa = new FRPesquisajog(null, rootPaneCheckingEnabled);
+        telaPesquisa.setTelaCompara(this);
+        telaPesquisa.setProduto(1);
+        telaPesquisa.setVisible(true);
+    }//GEN-LAST:event_BotãoSelect1MouseClicked
+
+    private void BotãoSelect2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoSelect2MouseClicked
+        FRPesquisajog telaPesquisa = new FRPesquisajog(null, rootPaneCheckingEnabled);
+        telaPesquisa.setTelaCompara(this);
+        telaPesquisa.setProduto(2);
+        telaPesquisa.setVisible(true);
+    }//GEN-LAST:event_BotãoSelect2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -433,20 +380,21 @@ public class ComparacaoDePrecosJFrame extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FRCompararPrecojog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRCompararjog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FRCompararPrecojog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRCompararjog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FRCompararPrecojog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRCompararjog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FRCompararPrecojog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FRCompararjog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FRCompararPrecojog dialog = new FRCompararPrecojog(new javax.swing.JFrame(), true);
+                FRCompararjog dialog = new FRCompararjog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -460,26 +408,23 @@ public class ComparacaoDePrecosJFrame extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaDescricaojo1;
-    private javax.swing.JTextArea AreaDescricaojog;
+    private javax.swing.JTextArea AreaDescricaojog2;
+    private javax.swing.JButton BotãoSelect1;
+    private javax.swing.JButton BotãoSelect2;
     private javax.swing.JTextField CaixaLojaJog1;
     private javax.swing.JTextField CaixaLojaJog2;
     private javax.swing.JTextField CaixaNomeJog2;
     private javax.swing.JTextField CaixaNomejog1;
-    private javax.swing.JTextField CaixaPorceJogos;
     private javax.swing.JTextField CaixaPrecoJog1;
     private javax.swing.JTextField CaixaPrecoJog2;
     private javax.swing.JLabel LableCapaJogo1;
     private javax.swing.JLabel LableCapaJogo2;
-    private javax.swing.JButton botaoComparar;
-    private javax.swing.JTextField caixaCódigo;
-    private javax.swing.JTextField caixaCódigo1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JTextField caixaCódigo1;
+    public javax.swing.JTextField caixaCódigo2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
