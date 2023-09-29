@@ -122,7 +122,7 @@ public class UsuarioDAO {
         try {
             stmt = con.prepareStatement(sql);
             if (tipo == 0 || tipo == 2) {
-                stmt.setString(1, "%" + desc + "%");
+                stmt.setString(1, desc + "%");
             } else {
                 stmt.setString(1, "%" + desc + "%");
             }

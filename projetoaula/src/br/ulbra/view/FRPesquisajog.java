@@ -16,6 +16,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FRPesquisajog extends javax.swing.JDialog {
 
+    private FRCompararjog telaCompara;
+
+    public void setTelaCompara(FRCompararjog telaCompara) {
+        this.telaCompara = telaCompara;
+    }
+
+    private int produto;
+
+    public void setProduto(int produto) {
+        this.produto = produto;
+    }
+
     /**
      * Creates new form FRPesquisajog
      */
@@ -69,13 +81,13 @@ public class FRPesquisajog extends javax.swing.JDialog {
 
         Tabelajog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "NOME", "PREÇO", "LOJA", "DATA LANÇAMENTO"
+                "CÓDIGO", "NOME", "PREÇO", "LOJA", "DATA LANÇAMENTO"
             }
         ));
         Tabelajog.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,9 +116,9 @@ public class FRPesquisajog extends javax.swing.JDialog {
                                 .addGap(32, 32, 32)
                                 .addComponent(BotãoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,19 +164,19 @@ public class FRPesquisajog extends javax.swing.JDialog {
         }
     }*/
     private void CaixaBuscaJogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CaixaBuscaJogActionPerformed
-        
+
     }//GEN-LAST:event_CaixaBuscaJogActionPerformed
 
     private void CaixaBuscaJogKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaixaBuscaJogKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             pesquisarJogo();
         }
     }//GEN-LAST:event_CaixaBuscaJogKeyPressed
-  private void pesquisarJogo() {
+    private void pesquisarJogo() {
         DefaultTableModel modelo = (DefaultTableModel) Tabelajog.getModel();
         modelo.setNumRows(0);
         JogoController controller = new JogoController();
-        for (Jogo jog : controller.readForPKjogo(CaixaBuscaJog.stringToInt())) {
+        for (Jogo jog : controller.readDescJogo(CaixaBuscaJog.getText())) {
             Object[] linha = {jog.getPkjogo(),
                 jog.getNomejog(),
                 jog.getPrecojog(),
@@ -178,14 +190,14 @@ public class FRPesquisajog extends javax.swing.JDialog {
     }//GEN-LAST:event_BotãoBuscarMouseClicked
 
     private void TabelajogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelajogMouseClicked
-         if (Tabelajog.getSelectedRow() != -1) {
-            int pk = Integer.parseInt(
-                Tabelajog.getValueAt(Tabelajog.getSelectedRow(), 0).toString());
-
-            FRupdusu telaUPD = new FRupdusu(null, rootPaneCheckingEnabled);
-            telaUPD.setPKUsuario(pk);
-            telaUPD.carregarUsuario();
-            telaUPD.setVisible(true);
+        if (Tabelajog.getSelectedRow() != -1) {
+            if (produto == 1) {
+                telaCompara.caixaCódigo1.setText(Tabelajog.getValueAt(Tabelajog.getSelectedRow(), 0).toString());
+            } else if (produto == 2) {
+                telaCompara.caixaCódigo2.setText(Tabelajog.getValueAt(Tabelajog.getSelectedRow(), 0).toString());
+            }
+            telaCompara.CarregarProduto(produto);
+            this.dispose();
         };
     }//GEN-LAST:event_TabelajogMouseClicked
 

@@ -54,7 +54,7 @@
                 <Property name="text" type="java.lang.String" value="Comparar jogos"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MEnseiConMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MEnseiConActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

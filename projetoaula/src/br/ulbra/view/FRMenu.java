@@ -108,9 +108,9 @@ public class FRMenu extends javax.swing.JFrame {
         Consulta.add(MEUsuarioCon);
 
         MEnseiCon.setText("Comparar jogos");
-        MEnseiCon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MEnseiConMouseClicked(evt);
+        MEnseiCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MEnseiConActionPerformed(evt);
             }
         });
         Consulta.add(MEnseiCon);
@@ -165,13 +165,13 @@ public class FRMenu extends javax.swing.JFrame {
         new FRCadjog(this,rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_CadJogoMouseClicked
 
-    private void MEnseiConMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MEnseiConMouseClicked
-      new FRCompararPrecojog(this,rootPaneCheckingEnabled).setVisible(true);  
-    }//GEN-LAST:event_MEnseiConMouseClicked
-
     private void CadJogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadJogoActionPerformed
         new FRCadjog(this,rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_CadJogoActionPerformed
+
+    private void MEnseiConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEnseiConActionPerformed
+        new FRCompararjog(this,rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_MEnseiConActionPerformed
 
     /**
      * @param args the command line arguments
